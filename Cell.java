@@ -3,8 +3,8 @@ import java.util.Random;
 public class Cell {
     public float roughness,heliumConcentration;
     public float[] readingError;
-    public int isOccupied;
-    public int isBeingUsed;
+    public boolean isOccupied;
+    public int unavailableTimeRemaining;
 
     public void setRoughness(float[] Bounds){
         Random random = new Random();
@@ -16,16 +16,29 @@ public class Cell {
         this.heliumConcentration = Bounds[0] + random.nextFloat() * (Bounds[1] - Bounds[0]);
     }
 
-    public float getTimeToTravel(){
-        return this.roughness*10;
+    public int getSecondsToTravelTo(){
+        return (int) this.roughness*10;
+    }
+
+    public int getSecondsToMine(){
+        return (int) this.heliumConcentration*10;
+    }
+
+    public void emptyHelium(){
+        this.heliumConcentration=0;
+    }
+
+    public void updateMiningStatus(int newTime){
+        if(this.unavailableTimeRemaining < newTime)
+            this.unavailableTimeRemaining = newTime;
     }
 
     public Cell(float[] errorBounds,float[] roughnessBounds, float[] heliumBounds){
         this.readingError = errorBounds;
         setRoughness(roughnessBounds);
         setHeliumConcentration(heliumBounds);
-        this.isOccupied = 0;
-        this.isBeingUsed = 0;
+        this.isOccupied = false;
+        this.unavailableTimeRemaining = 0;
     }
 
 }

@@ -4,7 +4,7 @@ public class Terrain {
     public float[] roughnessBounds = {0.0f,1.0f};
     public int width,length;
 
-    private final Cell[][]  grid;
+    public final Cell[][]  grid;
 
     public Terrain(int width, int length){
         this.width = width;
