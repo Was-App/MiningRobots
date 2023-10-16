@@ -1,16 +1,24 @@
 public class Terrain {
-    public float[] errorBounds = {0.0f, 0.1f};
+    public float[] errorBounds = {-0.1f, 0.1f};
     public float[] heliumBounds = {0.0f,1f};
     public float[] roughnessBounds = {0.0f,1.0f};
-    public int width,length;
+    public int length, height;
 
     public final Cell[][]  grid;
 
-    public Terrain(int width, int length){
-        this.width = width;
+    public void updateAdjacentMiningStatus(int newTime, int coordinateX, int coordinateY){
+        grid[coordinateX][coordinateY].updateMiningStatus(newTime);
+        grid[coordinateX-1][coordinateY].updateMiningStatus(newTime);
+        grid[coordinateX+1][coordinateY].updateMiningStatus(newTime);
+        grid[coordinateX][coordinateY-1].updateMiningStatus(newTime);
+        grid[coordinateX][coordinateY+1].updateMiningStatus(newTime);
+    }
+
+    public Terrain(int height, int length){
+        this.height = height;
         this.length = length;
-        this.grid = new Cell[width][length];
-        for(int i=0;i<width;i++){
+        this.grid = new Cell[height][length];
+        for(int i=0;i<height;i++){
             for(int j=0;j<length;j++){
                 grid[i][j] = new Cell(this.errorBounds,this.heliumBounds,this.roughnessBounds);
             }

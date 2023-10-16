@@ -9,7 +9,7 @@ public class Controller {
         }
     }
 
-    public Controller(char[] name){
+    public Controller(String name){
 
     }
 
