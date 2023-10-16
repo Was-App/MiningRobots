@@ -1,6 +1,7 @@
+import java.lang.String;
 public class Robot {
     Position position;
-    public char[] name;
+    public String name;
     public int numberOfBarrels;
     public int inactiveTimeRemaining;
 
@@ -105,9 +106,8 @@ public class Robot {
 
 
     //Constructor
-    public Robot(int x,int y,char[] name) {
+    public Robot(String name) {
         this.name = name;
-        this.position = new Position(x,y,0);
         this.numberOfBarrels = 0;
         this.inactiveTimeRemaining = 0;
     }
