@@ -6,6 +6,14 @@ public class Robot {
     public int numberOfBarrels;
     public int inactiveTimeRemaining;
 
+    //Constructor
+    public Robot(String name) {
+        this.position = new Position(0,0,0);
+        this.name = name;
+        this.numberOfBarrels = 0;
+        this.inactiveTimeRemaining = 0;
+    }
+
     /*
     public int[] getPosition(){
         return new int[]{this.position.x,this.position.y};
@@ -108,12 +116,4 @@ public class Robot {
         }
     }
 
-
-    //Constructor
-    public Robot(String name) {
-        this.position = new Position(0,0,0);
-        this.name = name;
-        this.numberOfBarrels = 0;
-        this.inactiveTimeRemaining = 0;
-    }
 }
