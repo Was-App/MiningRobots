@@ -1,5 +1,6 @@
 public class Controller {
     Robot controlledRobot;
+    String[] instructions;
 
     public void update(){
         if(controlledRobot.inactiveTimeRemaining==0){

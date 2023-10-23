@@ -12,7 +12,7 @@ public class Team {
                 int randomX = random.nextInt(terrain.length);
                 int randomY = random.nextInt(terrain.height);
                 if(!terrain.grid[randomX][randomY].isOccupied){
-                    robots[i].position = new Position(randomX,randomY,0);
+                    robots[i].currentCell = terrain.grid[randomX][randomY];
                     break;
                 }
             }

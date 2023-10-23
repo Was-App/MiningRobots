@@ -5,6 +5,16 @@ public class Cell {
     public float[] readingError;
     public boolean isOccupied;
     public int unavailableTimeRemaining;
+    public Cell[] adjacentCells;
+
+
+    public Cell(float[] errorBounds,float[] roughnessBounds, float[] heliumBounds){
+        setRoughness(roughnessBounds);
+        setHeliumConcentration(heliumBounds);
+        setReadingError(errorBounds);
+        this.isOccupied = false;
+        this.unavailableTimeRemaining = 0;
+    }
 
     private void setReadingError(float[] Bounds){
         Random random = new Random();
@@ -20,7 +30,7 @@ public class Cell {
         }
     }
 
-    private void setRoughness(float[] Bounds){//don't know if i do a "getRandomFromBounds()" function on a Math Class or something, or keep these 2
+    private void setRoughness(float[] Bounds){//don't know if I do a "getRandomFromBounds()" function on a Math Class or something, or keep these 2
         Random random = new Random();
         this.roughness = Bounds[0] + random.nextFloat() * (Bounds[1] - Bounds[0]);
     }
@@ -42,17 +52,15 @@ public class Cell {
         this.heliumConcentration=0;
     }
 
+    public void updateAllMiningStatus(int newTime){
+        this.updateMiningStatus(newTime);
+        for (Cell adjacentCell : this.adjacentCells) {
+            adjacentCell.updateMiningStatus(newTime);
+        }
+    }
+
     public void updateMiningStatus(int newTime){
         if(this.unavailableTimeRemaining < newTime)
             this.unavailableTimeRemaining = newTime;
     }
-
-    public Cell(float[] errorBounds,float[] roughnessBounds, float[] heliumBounds){
-        setRoughness(roughnessBounds);
-        setHeliumConcentration(heliumBounds);
-        setReadingError(errorBounds);
-        this.isOccupied = false;
-        this.unavailableTimeRemaining = 0;
-    }
-
 }
