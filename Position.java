@@ -19,7 +19,7 @@ class Position {
             newDirectionX = Math.max(0, directionX - 1);
         }
 
-        double timeCost = terrain[newDirectionX][newDirectionY].getTerrainRoughness();
+        double timeCost = terrain[newDirectionX][newDirectionY].getTerrainRoughness(); // aqui tem que colocar a funcao que pegue a rugosidade do terreno
 
         directionX = newDirectionX;
         directionY = newDirectionY;
