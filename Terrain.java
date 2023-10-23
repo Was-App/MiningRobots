@@ -1,5 +1,5 @@
 public class Terrain {
-    public float[] errorBounds = {-0.1f, 0.1f}; //É de -0.1 a 0.1 mesmo?
+    public float[] errorBounds = {-0.1f, 0.1f}; //É de -0.1 a 0.1 mesmo? erro da leitura intervalo contido em [0, 0.1]. O valor padrão é [0.02, 0.02].
     public float[] heliumBounds = {0.0f,1f};
     public float[] roughnessBounds = {0.0f,1.0f};
     public int length, height;
