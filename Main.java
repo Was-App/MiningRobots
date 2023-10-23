@@ -4,12 +4,12 @@ import static java.lang.Thread.sleep;
 
 public class Main {
     public static void main(String[] args){
-        Input entrada = new Input();
-        JSONObject jogo = (JSONObject) entrada.readFile("Game.json");
-        JSONObject times = (JSONObject) jogo.get("Times");
+        Input input = new Input();
+        JSONObject game = (JSONObject) input.readFile("Game.json");
+        JSONObject teams = (JSONObject) game.get("Teams");
         for(int i = 1; i < 3; i++){
-            JSONObject time = (JSONObject) times.get("Time" + i);
-            System.out.println(time.get("nome"));
+            JSONObject team = (JSONObject) teams.get("Team" + i);
+            System.out.println(team.get("name"));
         }
     }
 }

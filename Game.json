@@ -1,12 +1,12 @@
 {
   "Game Time" : 5,
-  "Times": {
-    "Time1": {
-      "nome": "Red",
-      "number de robots": 2
+  "Teams": {
+    "Team1": {
+      "name": "Red",
+      "number of robots": 2
     },
-    "Time2": {
-      "nome": "Yellow",
+    "Team2": {
+      "name": "Yellow",
       "number of robots": 3
     }
 
