@@ -24,5 +24,14 @@ public class Terrain {
             }
         }
     }
+    private boolean isValidCoordinate(int x, int y) {
+        return x >= 0 && x < height && y >= 0 && y < length;
+    }
+
+    private void updateCellMiningStatus(int newTime, int x, int y) {
+        if (isValidCoordinate(x, y)) {
+            grid[x][y].updateMiningStatus(newTime);
+        }
+    }
 
 }
