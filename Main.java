@@ -4,7 +4,7 @@ import static java.lang.Thread.sleep;
 
 public class Main {
     public static void main(String[] args){
-        Input input = new Input();
+        Read input = new Read();
         JSONObject game = (JSONObject) input.readFile("Game.json");
         JSONObject teams = (JSONObject) game.get("Teams");
         for(int i = 1; i < 3; i++){

@@ -20,7 +20,7 @@ public class Team {
 
         }
     }
-    public Team(int numberOfRobots,String teamName,String[] robotNames){
+    public Team(int numberOfRobots, String teamName, String robotNames){
         this.numberOfRobots = numberOfRobots;
         this.name = teamName;
         this.robots = new Robot[numberOfRobots];

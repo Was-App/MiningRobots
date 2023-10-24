@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/MiningRobots.iml" filepath="$PROJECT_DIR$/.idea/MiningRobots.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MiningRobots.iml" filepath="$PROJECT_DIR$/MiningRobots.iml" />
       <module fileurl="file://$PROJECT_DIR$/input/input.iml" filepath="$PROJECT_DIR$/input/input.iml" />
     </modules>
   </component>

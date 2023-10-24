@@ -4,8 +4,9 @@ public class Controller {
 
     public void update(){
         if(controlledRobot.inactiveTimeRemaining==0){
-            while(this.inactiveTimeRemaining == 0) {
+            while(controlledRobot.inactiveTimeRemaining == 0) {
                 //fetch instruction
+                return;
             }
         }else{
             controlledRobot.inactiveTimeRemaining-=1;
