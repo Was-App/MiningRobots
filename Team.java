@@ -1,8 +1,11 @@
 import java.util.Random;
 public class Team {
     Robot[] robots;
+    Controller[] controllers;
     String name;
+    String[] robotNames;
     int numberOfRobots;
+    String[][] robotsInstructions;
 
     public void placeRobots(Terrain terrain){
         Random random = new Random();
@@ -20,12 +23,16 @@ public class Team {
 
         }
     }
-    public Team(int numberOfRobots, String teamName, String robotNames){
+    public Team(int numberOfRobots, String teamName, String[] robotNames, String[][] instructions){
         this.numberOfRobots = numberOfRobots;
         this.name = teamName;
         this.robots = new Robot[numberOfRobots];
+        this.controllers = new Controller[numberOfRobots];
+        this.robotsInstructions = instructions;
         for(int i=0;i<numberOfRobots;i++) {
-            robots[i] = new Robot(robotNames[i]);
+            this.robots[i] = new Robot(robotNames[i]);
+            this.controllers[i] = new Controller (robots[i],instructions[i]);
         }
+
     }
 }

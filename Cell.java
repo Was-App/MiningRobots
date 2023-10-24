@@ -47,7 +47,7 @@ public class Cell {
         return (int) this.roughness*10;
     }
 
-    public int getSecondsToMine(){
+    public int getSecondsToExtract(){
         return (int) this.heliumConcentration*10;
     }
 
@@ -55,17 +55,17 @@ public class Cell {
         this.heliumConcentration=0;
     }
 
-    public void updateAllMiningStatus(int newTime){
+    public void updateAllExtractingStatus(int newTime){
         // Updates itself's and the adjacent cell's unavailable time
-        this.updateMiningStatus(newTime);
+        this.updateExtractingStatus(newTime);
         for (Cell adjacentCell : this.adjacentCells) {
             if(adjacentCell != null){
-                adjacentCell.updateMiningStatus(newTime);
+                adjacentCell.updateExtractingStatus(newTime);
             }
         }
     }
 
-    public void updateMiningStatus(int newTime){
+    public void updateExtractingStatus(int newTime){
         if(this.unavailableTimeRemaining < newTime)
             this.unavailableTimeRemaining = newTime;
     }

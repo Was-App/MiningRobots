@@ -44,6 +44,10 @@ public class Robot {
         this.orientation = (this.position.orientation-1)%4;
     }
 
+    public boolean isFollowingOccupied(){
+        return this.currentCell.adjacentCells[this.orientation].isOccupied;
+    }
+
     public void walk() {
         //Depending on the orientation the robot is facing
         if(!this.currentCell.adjacentCells[this.orientation].isOccupied) { // if it isn't already occupied
@@ -54,11 +58,11 @@ public class Robot {
         }
     }
 
-    private void mineHelium(){
+    public void extractHelium(){
         if(this.currentCell.unavailableTimeRemaining==0){
-            this.inactiveTimeRemaining = this.currentCell.getSecondsToMine();
+            this.inactiveTimeRemaining = this.currentCell.getSecondsToExtract();
             this.numberOfBarrels += (int) this.currentCell.heliumConcentration*10;
-            this.currentCell.updateAllMiningStatus(this.inactiveTimeRemaining);
+            this.currentCell.updateAllExtractingStatus(this.inactiveTimeRemaining);
             this.currentCell.emptyHelium();
         }
     }

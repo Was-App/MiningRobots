@@ -6,7 +6,11 @@ consideração um fator de erro de extração. A cada turno os robôs executam s
 
 ## Entrada
 
-A entrada do programa é composta por dois arquivos no formato ".json". Um arquivo contém as informações sobre o terreno a ser utilizado dentro do jogo, sendo elas: comprimento e largura do terreno. O outro arquivo contém as informações sobre o jogo em si e as equipes, sendo elas: tempo de jogo, nome de cada equipe, quantidade de robôs e o nome de cada robô.
+A entrada do programa é composta por dois arquivos no formato ".json". Um arquivo contém as informações sobre o terreno a ser utilizado dentro do jogo, sendo elas: comprimento e largura do terreno. O outro arquivo contém as informações sobre o jogo em si e as equipes, sendo elas: tempo de jogo, nome de cada equipe, quantidade de robôs, nome e conjunto de instruções para cada robô.
+
+### Instruções
+
+As instruções podem ser simples, como virar a direita (turnLeft), virar a esquerda (turnRight), andar(walk), e prospectar Helium (prospectHelium), ou complexas, como andar para o caminho de menor resistência (walkToBestDirection) ou prospectar apenas se a concentração de helium for maior que a metade (prospectIfGreaterThenHalf).
 
 ## 🖥 Running the program
 **Primeiro, será necessário ter o pacote json-simple-1.1.jar instalado em sua máquina. <br>**
