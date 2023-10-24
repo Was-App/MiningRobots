@@ -11,5 +11,6 @@ public class Main {
             JSONObject team = (JSONObject) teams.get("Team" + i);
             System.out.println(team.get("name"));
         }
+        //game.run(args);
     }
 }
