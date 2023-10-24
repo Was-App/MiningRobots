@@ -19,7 +19,7 @@ A cada iteração do programa, é exibido, no terminal, o nome das equipes parti
 ## 🖥 Running the program
 **Primeiro, será necessário ter o pacote json-simple-1.1.jar instalado em sua máquina. <br>**
 Para compilar o programa, será necessário:
-- `{path/to/json-sinple-1.1.jar}` <br>
+- `{path/to/json-simple-1.1.jar}` <br>
 
 Em seguida, execute:
 ```bash
