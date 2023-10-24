@@ -12,6 +12,10 @@ A entrada do programa é composta por dois arquivos no formato ".json". Um arqui
 
 As instruções podem ser simples, como virar a direita (turnLeft), virar a esquerda (turnRight), andar(walk), e prospectar Helium (prospectHelium), ou complexas, como andar para o caminho de menor resistência (walkToBestDirection) ou prospectar apenas se a concentração de helium for maior que a metade (prospectIfGreaterThenHalf).
 
+## Saída
+
+A cada iteração do programa, é exibido, no terminal, o nome das equipes participantes, a quantidade de Hélio extraído por cada equipe e o tempo atual de jogo, para que seja possível acompanhar o andamento da partida.
+
 ## 🖥 Running the program
 **Primeiro, será necessário ter o pacote json-simple-1.1.jar instalado em sua máquina. <br>**
 Para compilar o programa, será necessário:
