@@ -15,6 +15,7 @@ public class Controller {
         if(controlledRobot.inactiveTimeRemaining==0){
             while(controlledRobot.inactiveTimeRemaining == 0) {
                 // Fetch next instruction and execute it, only stops when it gets an instruction that takes time
+                // Should check if instruction is null first
                 this.executeInstruction(this.instructions.poll());
             }
         }else{
@@ -51,6 +52,7 @@ public class Controller {
         if(this.controlledRobot.readHeliumConcentration()>0.5)
             this.controlledRobot.extractHelium();
     }
+
     private void walkToBestDirection(){
         int bestDirection = findBestUnoccupiedDirection();
         while(this.controlledRobot.orientation!=bestDirection)

@@ -4,9 +4,9 @@ public class Cell {
     public float roughness,heliumConcentration;
     public float[] readingError;
     public boolean isOccupied;
-    // The objective is to know if the Cell is being used, for each turn ingame, it deminishes the unavailable time remaining, to simulate time passing
+    // The objective is to know if the Cell is being used, for each turn ingame, it diminishes the unavailable time remaining, to simulate time passing
     public int unavailableTimeRemaining;
-    // Each cell posesses the knowledge of its adjacent cells, so a robot can navigate to them
+    // Each cell possesses the knowledge of its adjacent cells, so a robot can navigate to them
     public Cell[] adjacentCells;
 
 
@@ -33,7 +33,7 @@ public class Cell {
         }
     }
 
-    private void setRoughness(float[] Bounds){//don't know if I do a "getRandomFromBounds()" function on a Math Class or something, or keep these 2
+    private void setRoughness(float[] Bounds){
         Random random = new Random();
         this.roughness = Bounds[0] + random.nextFloat() * (Bounds[1] - Bounds[0]);
     }
