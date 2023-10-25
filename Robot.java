@@ -7,7 +7,7 @@ public class Robot {
     public int orientation;
     public Cell currentCell;
 
-    //Constructor
+
     public Robot(String name) {
         this.name = name;
         this.numberOfBarrels = 0;
@@ -22,12 +22,12 @@ public class Robot {
         return this.currentCell.heliumConcentration + error;
     }
 
-    // Need to check if next cell is valid
+
     public float scanFollowingRoughness(){
         return this.currentCell.adjacentCells[this.orientation].roughness;
     }
 
-    // Implement this better
+
     public int getTimePassed(Game game){
         return game.secondsPassed;
     }
@@ -40,23 +40,21 @@ public class Robot {
         this.orientation = (this.orientation-1)%4;
     }
 
-    // Again, check if next is valid first
+
     public boolean isFollowingOccupied(){
         return this.currentCell.adjacentCells[this.orientation].isOccupied;
     }
 
-    // Have to check if it's valid, or it'll be checking a null Cell
+
     public void walk() {
-        //Depending on the orientation the robot is facing
-        if(!this.currentCell.adjacentCells[this.orientation].isOccupied) { // if it isn't already occupied
+        if(!this.currentCell.adjacentCells[this.orientation].isOccupied) {
             this.inactiveTimeRemaining = this.currentCell.getSecondsToTravelTo();
-            this.currentCell.isOccupied = false; //vacates the current cell
+            this.currentCell.isOccupied = false;
             this.currentCell = this.currentCell.adjacentCells[this.orientation];
-            this.currentCell.isOccupied = true; //occupy the next one
+            this.currentCell.isOccupied = true;
         }
     }
 
-    // Can throw an exception here, for when you can't extract
     public void extractHelium(){
         if(this.currentCell.unavailableTimeRemaining==0){
             this.inactiveTimeRemaining = this.currentCell.getSecondsToExtract();
