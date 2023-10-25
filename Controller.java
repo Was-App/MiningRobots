@@ -79,6 +79,7 @@ class complexController extends Controller {
         this.inactiveTimeRemaining += Math.max(numberOfTurns, 1) * Robot.baseTimeToDoActions;
         this.inactiveTimeRemaining += controlledRobot.getTimeToWalk();
         this.bestDirection = -1;
+
     }
 
     private void findBestUnoccupiedDirection() {
