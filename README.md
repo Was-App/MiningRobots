@@ -19,9 +19,13 @@ A cada iteração do programa, é exibido, no terminal, o nome das equipes parti
 ## 🖥 Running the program
 Para rodar o programa, primeiramente, será necessário dar um "build" no projeto.
 
+Arquivos de entrada:<br>
+-`{gamePath}`<br>
+-`{terrainPath}`
+
 Em seguida, execute:
 ```bash
-javac -jar {path/to/json-simple-1.1.jar} {todos os arquivos com extensão .java}
+javac -jar {path/to/json-simple-1.1.jar} {gamePath} {terrainPath}
 ```
 ---
 
