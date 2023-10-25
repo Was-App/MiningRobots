@@ -5,15 +5,13 @@
     "Team1": {
       "name": "Red",
       "number of robots": 2,
-      "name of robots": [
-
-      ]
+      "controller type": "Complex"
     },
     "Team2": {
       "name": "Yellow",
-      "number of robots": 3
+      "number of robots": 3,
+      "controller type": "Simple"
     }
-
   }
 
 }

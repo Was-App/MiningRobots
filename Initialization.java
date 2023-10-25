@@ -26,7 +26,7 @@ public class Initialization {
         int numOfTeams = (int) gameSettings.get("Number of Teams");
         for(int i = 1; i < numOfTeams; i++){
             JSONObject actualTeam = (JSONObject) teamsFromFile.get("Time" + i);
-            Team team = new Team((int) actualTeam.get("number of robots"), (String) actualTeam.get("name"), "Robo1");
+            Team team = new Team((int) actualTeam.get("number of robots"), (String) actualTeam.get("name"), (String) actualTeam.get("controller type"));
             teams.add(team);
         }
         return teams;

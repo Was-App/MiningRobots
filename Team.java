@@ -5,15 +5,14 @@ public class Team {
     String name;
     String[] robotNames;
     int numberOfRobots;
-    String[][] robotsInstructions;
 
-    public Team(int numberOfRobots, String teamName, String[] robotNames, String controllerType){
+    public Team(int numberOfRobots, String teamName, String controllerType){
         this.numberOfRobots = numberOfRobots;
         this.name = teamName;
         this.robots = new Robot[numberOfRobots];
         this.controllers = new Controller[numberOfRobots];
         for(int i=0;i<numberOfRobots;i++) {
-            this.robots[i] = new Robot(robotNames[i]);
+            this.robots[i] = new Robot("robot"+i);
             this.controllers[i] = chooseController(controllerType,robots[i]);
         }
 
