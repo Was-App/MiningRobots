@@ -25,7 +25,7 @@ Arquivos de entrada:<br>
 
 Em seguida, execute:
 ```bash
-javac -jar {path/to/json-simple-1.1.jar} {gamePath} {terrainPath}
+java -jar {path/to/json-simple-1.1.jar} {gamePath} {terrainPath}
 ```
 ---
 
