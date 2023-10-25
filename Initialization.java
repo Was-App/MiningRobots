@@ -1,6 +1,5 @@
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-
 import java.util.ArrayList;
 
 public class Initialization {
@@ -19,6 +18,7 @@ public class Initialization {
     public int getTerrainHeight(){
         return (int) gameSettings.get("heigth");
     }
+
 
     public ArrayList<Team> setTeams(){
         JSONObject teamsFromFile = (JSONObject) gameSettings.get("Teams");

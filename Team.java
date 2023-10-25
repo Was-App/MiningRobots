@@ -7,6 +7,28 @@ public class Team {
     int numberOfRobots;
     String[][] robotsInstructions;
 
+    public Team(int numberOfRobots, String teamName, String[] robotNames, String controllerType){
+        this.numberOfRobots = numberOfRobots;
+        this.name = teamName;
+        this.robots = new Robot[numberOfRobots];
+        this.controllers = new Controller[numberOfRobots];
+        for(int i=0;i<numberOfRobots;i++) {
+            this.robots[i] = new Robot(robotNames[i]);
+            this.controllers[i] = chooseController(controllerType,robots[i]);
+        }
+
+    }
+
+    public Controller chooseController(String controllerType, Robot robot) {
+        if(controllerType.equals("Simple")){
+            return new simpleController(robot);
+        }
+        if(controllerType.equals("Complex")){
+            return new complexController(robot);
+        }
+        return null;
+    }
+
     public void placeRobots(Terrain terrain){
         Random random = new Random();
         boolean freeSpace = false;
@@ -19,20 +41,7 @@ public class Team {
                     break;
                 }
             }
-
-
         }
     }
-    public Team(int numberOfRobots, String teamName, String[] robotNames, String[][] instructions){
-        this.numberOfRobots = numberOfRobots;
-        this.name = teamName;
-        this.robots = new Robot[numberOfRobots];
-        this.controllers = new Controller[numberOfRobots];
-        this.robotsInstructions = instructions;
-        for(int i=0;i<numberOfRobots;i++) {
-            this.robots[i] = new Robot(robotNames[i]);
-            this.controllers[i] = new Controller(this.robots[i]);
-        }
 
-    }
 }

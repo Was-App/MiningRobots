@@ -6,6 +6,8 @@ public class Robot {
     public int inactiveTimeRemaining;
     public int orientation;
     public Cell currentCell;
+    public float currentHeliumConcentration;
+    public static int baseTimeToDoActions;
 
     //Constructor
     public Robot(String name) {
@@ -13,6 +15,8 @@ public class Robot {
         this.numberOfBarrels = 0;
         this.inactiveTimeRemaining = 0;
         this.orientation = 0;
+        this.currentHeliumConcentration = -1;
+        baseTimeToDoActions = 1;
     }
 
     public float readHeliumConcentration(){
@@ -41,22 +45,24 @@ public class Robot {
     }
 
     // Again, check if next is valid first
-    public boolean isFollowingOccupied(){
-        return this.currentCell.adjacentCells[this.orientation].isOccupied;
+    public boolean isFollowingPossibleToWalk(){
+        if(this.currentCell.adjacentCells[this.orientation] != null)
+            return this.currentCell.adjacentCells[this.orientation].isOccupied;
+        return false;
     }
 
     // Have to check if it's valid, or it'll be checking a null Cell
     public void walk() {
         //Depending on the orientation the robot is facing
-        if(!this.currentCell.adjacentCells[this.orientation].isOccupied) { // if it isn't already occupied
+        if(!this.currentCell.adjacentCells[this.orientation].isOccupied && this.currentCell.adjacentCells[this.orientation] != null) {
             this.inactiveTimeRemaining = this.currentCell.getSecondsToTravelTo();
-            this.currentCell.isOccupied = false; //vacates the current cell
+            this.currentCell.isOccupied = false;
             this.currentCell = this.currentCell.adjacentCells[this.orientation];
-            this.currentCell.isOccupied = true; //occupy the next one
+            this.currentCell.isOccupied = true;
+            this.currentHeliumConcentration = -1;
         }
     }
 
-    // Can throw an exception here, for when you can't extract
     public void extractHelium(){
         if(this.currentCell.unavailableTimeRemaining==0){
             this.inactiveTimeRemaining = this.currentCell.getSecondsToExtract();

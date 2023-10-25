@@ -1,81 +1,96 @@
-import java.util.LinkedList;
-import java.util.Queue;
-public class Controller {
+public abstract class Controller {
     Robot controlledRobot;
-    Queue <String> instructions;
     int inactiveTimeRemaining;
+    boolean isActive;
 
     public Controller(Robot robot){
         this.controlledRobot = robot;
-
+        this.inactiveTimeRemaining = 0;
+        this.isActive = true;
     }
 
-    public void update(){
-        if(this.inactiveTimeRemaining == 0){
-            while(this.inactiveTimeRemaining == 0) {
-
-            }
-        }else{
-            controlledRobot.inactiveTimeRemaining-=1;
-        }
-    }
-
-    private void executeInstruction(String instruction){
-        switch(instruction){
-            case "extractIfGreaterThenHalf":
-                this.extractIfGreaterThenHalf();
-                break;
-            case "walkToBestDirection":
-                this.walkToBestDirection();
-                break;
-            case "turnRight":
-                this.controlledRobot.turnRight();
-                break;
-            case "turnLeft":
-                this.controlledRobot.turnLeft();
-                break;
-            case "walk":
-                this.controlledRobot.walk();
-                break;
-            case "mineHelium":
-                this.controlledRobot.extractHelium();
-                break;
-            default:
-                break;
-        }
-    }
-
-    private void extractIfGreaterThen(float value){
-        if(this.controlledRobot.readHeliumConcentration()>value)
-            this.controlledRobot.extractHelium();
-    }
-
-    private void walkToBestDirection(){
-        int bestDirection = findBestUnoccupiedDirection();
-        while(this.controlledRobot.orientation!=bestDirection)
-            this.controlledRobot.turnRight();
-        this.controlledRobot.walk();
-    }
-
-    private int findBestUnoccupiedDirection(){
-        int bestDirection = controlledRobot.orientation;
-        float leastRoughness = this.controlledRobot.scanFollowingRoughness();
-        // The robot does a full cycle around itself, scanning the terrain roughness and determining the best path
-        for(int i=0;i<this.controlledRobot.currentCell.adjacentCells.length;i++){
-            this.controlledRobot.turnRight();
-            if(controlledRobot.scanFollowingRoughness() < leastRoughness && !this.controlledRobot.isFollowingOccupied()){
-                bestDirection = this.controlledRobot.orientation;
-                leastRoughness = controlledRobot.scanFollowingRoughness();
-            }
-        }
-        return bestDirection;
-    }
-
+    public abstract void update();
 
 }
 
 class simpleController extends Controller{
     public simpleController(Robot robot) {
         super(robot);
+    }
+
+    public void update(){
+        if(isActive){
+
+            if(this.controlledRobot.currentHeliumConcentration == -1){
+                this.controlledRobot.scanHeliumConcentration();
+            }else if(this.controlledRobot.currentHeliumConcentration > 0){
+                this.controlledRobot.extractHelium();
+                this.inactiveTimeRemaining += this.controlledRobot.getTimeToExtract();
+            }else if(!this.controlledRobot.isFollowingPossibleToWalk()){
+                this.controlledRobot.turnRight();
+            }else if(this.controlledRobot.isFollowingPossibleToWalk()){
+                this.controlledRobot.walk();
+                this.inactiveTimeRemaining += controlledRobot.getTimeToWalk();
+            }
+            this.isActive = false;
+            this.inactiveTimeRemaining += Robot.baseTimeToDoActions;
+
+        }else{
+            this.inactiveTimeRemaining -= 1;
+            if(this.inactiveTimeRemaining == 0)
+                this.isActive = true;
+        }
+    }
+}
+
+class complexController extends Controller {
+    public complexController(Robot robot) {
+        super(robot);
+    }
+
+    public int bestDirection;
+
+    public void update() {
+        if (isActive) {
+            if (this.controlledRobot.currentHeliumConcentration == -1) {
+                this.controlledRobot.scanHeliumConcentration();
+                this.inactiveTimeRemaining += Robot.baseTimeToDoActions;
+            } else if (this.controlledRobot.currentHeliumConcentration > 0.1) {
+                this.controlledRobot.extractHelium();
+                this.inactiveTimeRemaining += controlledRobot.getTimeToExtract();
+            } else if (this.bestDirection == -1) {
+                findBestUnoccupiedDirection();
+            } else {
+                walkToBestDirection();
+            }
+        } else {
+            this.inactiveTimeRemaining -= 1;
+        }
+        this.isActive = this.inactiveTimeRemaining == 0;
+    }
+
+    private void walkToBestDirection() {
+        int numberOfTurns = 0;
+        while (this.controlledRobot.orientation != bestDirection) {
+            this.controlledRobot.turnRight();
+            numberOfTurns += 1;
+        }
+        this.controlledRobot.walk();
+        this.inactiveTimeRemaining += Math.max(numberOfTurns, 1) * Robot.baseTimeToDoActions;
+        this.inactiveTimeRemaining += controlledRobot.getTimeToWalk();
+        this.bestDirection = -1;
+    }
+
+    private void findBestUnoccupiedDirection() {
+        this.bestDirection = controlledRobot.orientation;
+        float leastRoughness = this.controlledRobot.scanFollowingRoughness();
+        for (int i = 0; i < this.controlledRobot.currentCell.adjacentCells.length; i++) {
+            this.controlledRobot.turnRight();
+            if (controlledRobot.scanFollowingRoughness() < leastRoughness && !this.controlledRobot.isFollowingPossibleToWalk()) {
+                this.bestDirection = this.controlledRobot.orientation;
+                leastRoughness = controlledRobot.scanFollowingRoughness();
+            }
+        }
+        this.inactiveTimeRemaining += 4 * Robot.baseTimeToDoActions;
     }
 }
