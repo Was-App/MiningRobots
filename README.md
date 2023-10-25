@@ -29,6 +29,12 @@ java -jar {path/to/json-simple-1.1.jar} {gamePath} {terrainPath}
 ```
 ---
 
+## Integrantes do Grupo
 
+| _Davi dos Reis_ | _Guilherme Francis_ | _Wasterman Ávila Apolinário_ |
+| :-: | :-: | :-: |
+| ![https://github.com/Reisdrj](https://avatars.githubusercontent.com/u/105249333?v=4) | ![https://github.com/GuilhermeDex](https://avatars.githubusercontent.com/u/130943190?v=4) | ![https://github.com/Was-App](https://avatars.githubusercontent.com/u/119600193?v=4) |
+
+&nbsp;
 
 
