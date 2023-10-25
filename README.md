@@ -17,24 +17,14 @@ As instruções podem ser simples, como virar a direita (turnLeft), virar a esqu
 A cada iteração do programa, é exibido, no terminal, o nome das equipes participantes, a quantidade de Hélio extraído por cada equipe e o tempo atual de jogo, para que seja possível acompanhar o andamento da partida.
 
 ## 🖥 Running the program
-**Primeiro, será necessário ter o pacote json-simple-1.1.jar instalado em sua máquina. <br>**
-Para compilar o programa, será necessário:
-- `{path/to/json-simple-1.1.jar}` <br>
+Para rodar o programa, primeiramente, será necessário dar um "build" no projeto.
 
 Em seguida, execute:
 ```bash
-javac -classpath {path/to/json-simple-1.1.jar} {todos os arquivos com extensão .java}
+javac -jar {path/to/json-simple-1.1.jar} {todos os arquivos com extensão .java}
 ```
 ---
 
-Para executar o jogo, será necessário:
-
-- `{inputGamePath}`
-- `{inputTerrainPath}`
-
-```bash
-java -classpath {path/to/json-simple-1.1.jar} {todos os arquivos com extensão .class} {inputGamePath} {inputTerrainPath}
-```
 
 
 
