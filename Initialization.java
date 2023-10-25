@@ -17,7 +17,7 @@ public class Initialization {
     }
 
     public int getTerrainHeight(){
-        return (int) gameSettings.get("heigth");
+        return (int) gameSettings.get("height");
     }
 
     public ArrayList<Team> setTeams(){
