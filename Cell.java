@@ -46,7 +46,7 @@ public class Cell {
     }
 
     public int getSecondsToExtract(){
-        return (int) this.heliumConcentration*10;
+        return (int) this.heliumConcentration*5;
     }
 
     public void emptyHelium(){
