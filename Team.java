@@ -31,7 +31,7 @@ public class Team {
         this.robotsInstructions = instructions;
         for(int i=0;i<numberOfRobots;i++) {
             this.robots[i] = new Robot(robotNames[i]);
-            this.controllers[i] = new Controller (robots[i],instructions[i]);
+            this.controllers[i] = new Controller(this.robots[i]);
         }
 
     }

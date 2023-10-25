@@ -3,20 +3,17 @@ import java.util.Queue;
 public class Controller {
     Robot controlledRobot;
     Queue <String> instructions;
+    int inactiveTimeRemaining;
 
-    public Controller(Robot robot,String[] instructions){
+    public Controller(Robot robot){
         this.controlledRobot = robot;
-        // The instructions for each robot are store in a queue, so as to be simpler to fetch
-        for(String instruction : instructions)
-            this.instructions.add(instruction);
+
     }
 
     public void update(){
-        if(controlledRobot.inactiveTimeRemaining==0){
-            while(controlledRobot.inactiveTimeRemaining == 0) {
-                // Fetch next instruction and execute it, only stops when it gets an instruction that takes time
-                // Should check if instruction is null first
-                this.executeInstruction(this.instructions.poll());
+        if(this.inactiveTimeRemaining == 0){
+            while(this.inactiveTimeRemaining == 0) {
+
             }
         }else{
             controlledRobot.inactiveTimeRemaining-=1;
@@ -48,8 +45,8 @@ public class Controller {
         }
     }
 
-    private void extractIfGreaterThenHalf(){
-        if(this.controlledRobot.readHeliumConcentration()>0.5)
+    private void extractIfGreaterThen(float value){
+        if(this.controlledRobot.readHeliumConcentration()>value)
             this.controlledRobot.extractHelium();
     }
 
@@ -75,4 +72,10 @@ public class Controller {
     }
 
 
+}
+
+class simpleController extends Controller{
+    public simpleController(Robot robot) {
+        super(robot);
+    }
 }
