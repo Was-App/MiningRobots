@@ -2,7 +2,7 @@
 
 Mining Robots é um jogo em que, a equipe que extrair a maior quantidade de Hélio do terreno, dentro do tempo de jogo estipulado, ganha. 
 Cada equipe possui uma quantidade pré-determinada de robôs que, em cada célula do terreno, podem extrair uma quantidade específica do material, levando em
-consideração um fator de erro de extração. A cada turno os robôs executam suas ações até que não haja mais tempo de
+consideração um fator de erro de extração. A cada turno os robôs executam suas ações até que não haja mais tempo de jogo.
 
 ## Entrada
 
