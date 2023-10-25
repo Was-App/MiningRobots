@@ -4,9 +4,7 @@ public class Cell {
     public float roughness,heliumConcentration;
     public float[] readingError;
     public boolean isOccupied;
-    // The objective is to know if the Cell is being used, for each turn ingame, it diminishes the unavailable time remaining, to simulate time passing
     public int unavailableTimeRemaining;
-    // Each cell possesses the knowledge of its adjacent cells, so a robot can navigate to them
     public Cell[] adjacentCells;
 
 
@@ -16,7 +14,7 @@ public class Cell {
         setReadingError(errorBounds);
         this.isOccupied = false;
         this.unavailableTimeRemaining = 0;
-        this.adjacentCells = new Cell[4]; // Initializes as null
+        this.adjacentCells = new Cell[4];
     }
 
     private void setReadingError(float[] Bounds){
@@ -56,7 +54,6 @@ public class Cell {
     }
 
     public void updateAllExtractingStatus(int newTime){
-        // Updates itself's and the adjacent cell's unavailable time
         this.updateExtractingStatus(newTime);
         for (Cell adjacentCell : this.adjacentCells) {
             if(adjacentCell != null){
