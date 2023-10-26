@@ -21,8 +21,8 @@ public class Initialization {
 
     public ArrayList<Team> setTeams(){
         JSONObject teamsFromFile = (JSONObject) gameSettings.get("Teams");
-        ArrayList<Team> teams = new ArrayList<>();
-        int numOfTeams = (int) gameSettings.get("Number of Teams");
+        ArrayList<Team> teams = new ArrayList<Team>();
+        long numOfTeams = (long) gameSettings.get("Number of Teams");
         for(int i = 1; i < numOfTeams; i++){
             JSONObject actualTeam = (JSONObject) teamsFromFile.get("Time" + i);
             Team team = new Team((int) actualTeam.get("number of robots"), (String) actualTeam.get("name"), (String) actualTeam.get("controller type"));
@@ -30,5 +30,4 @@ public class Initialization {
         }
         return teams;
     }
-
 }
