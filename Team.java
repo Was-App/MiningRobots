@@ -36,7 +36,7 @@ public class Team {
                 if(!terrain.grid[randomX][randomY].isOccupied){
                     robots[i].currentCell = terrain.grid[randomX][randomY];
                     robots[i].currentCell.isOccupied = true;
-                    robots[i].position.coordinates = new int[]{randomX, randomY};
+                    robots[i].position = new Position(new int[]{randomX, randomY});
                     break;
                 }
             }
