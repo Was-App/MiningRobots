@@ -6,13 +6,13 @@ public class Robot {
     public Cell currentCell;
     public float currentHeliumConcentration;
     public Position position;
-    public static int baseTimeToDoActions;
+    public static int BASE_TIME_TO_DO_ACTIONS;
 
     public Robot(String name) {
         this.name = name;
         this.numberOfBarrels = 0;
         this.currentHeliumConcentration = -1;
-        baseTimeToDoActions = 1;
+        BASE_TIME_TO_DO_ACTIONS = 1;
     }
 
     public void scanHeliumConcentration(){

@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 
 public class Game {
-    //This will run the game
     public int secondsPassed;
     public int gameTime;
     public Terrain gameTerrain;

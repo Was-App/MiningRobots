@@ -2,7 +2,8 @@ public class Terrain {
     public float[] errorBounds = {-0.1f, 0.1f};
     public float[] heliumBounds = {0.0f,1f};
     public float[] roughnessBounds = {0.0f,1.0f};
-    public int length, height;
+    public int length;
+    public int height;
     public final Cell[][]  grid;
 
     public Terrain(int height, int length){

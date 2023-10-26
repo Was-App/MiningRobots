@@ -32,7 +32,7 @@ class simpleController extends Controller{
                 this.controlledRobot.walk();
                 this.inactiveTimeRemaining += controlledRobot.getTimeToWalk();
             }
-            this.inactiveTimeRemaining += Robot.baseTimeToDoActions;
+            this.inactiveTimeRemaining += Robot.BASE_TIME_TO_DO_ACTIONS;
 
         }else{
             this.inactiveTimeRemaining -= 1;
@@ -52,7 +52,7 @@ class complexController extends Controller {
         if (isActive) {
             if (this.controlledRobot.currentHeliumConcentration == -1) {
                 this.controlledRobot.scanHeliumConcentration();
-                this.inactiveTimeRemaining += Robot.baseTimeToDoActions;
+                this.inactiveTimeRemaining += Robot.BASE_TIME_TO_DO_ACTIONS;
             } else if (this.controlledRobot.currentHeliumConcentration > 0.1) {
                 this.controlledRobot.extractHelium();
                 this.inactiveTimeRemaining += controlledRobot.getTimeToExtract();
@@ -74,7 +74,7 @@ class complexController extends Controller {
             numberOfTurns += 1;
         }
         this.controlledRobot.walk();
-        this.inactiveTimeRemaining += Math.max(numberOfTurns, 1) * Robot.baseTimeToDoActions;
+        this.inactiveTimeRemaining += Math.max(numberOfTurns, 1) * Robot.BASE_TIME_TO_DO_ACTIONS;
         this.inactiveTimeRemaining += controlledRobot.getTimeToWalk();
         this.bestDirection = -1;
 
@@ -90,6 +90,6 @@ class complexController extends Controller {
                 leastRoughness = controlledRobot.scanFollowingRoughness();
             }
         }
-        this.inactiveTimeRemaining += 4 * Robot.baseTimeToDoActions;
+        this.inactiveTimeRemaining += 4 * Robot.BASE_TIME_TO_DO_ACTIONS;
     }
 }

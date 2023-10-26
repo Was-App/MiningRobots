@@ -1,0 +1,17 @@
+{
+  "Game Time" : 5,
+  "Number of Teams": 2,
+  "Teams": {
+    "Team1": {
+      "name": "Red",
+      "number of robots": 2,
+      "controller type": "Complex"
+    },
+    "Team2": {
+      "name": "Yellow",
+      "number of robots": 3,
+      "controller type": "Simple"
+    }
+  }
+
+}
