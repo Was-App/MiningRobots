@@ -3,9 +3,9 @@ import org.json.simple.JSONObject;
 import java.util.ArrayList;
 
 public class Initialization {
-    private JSONObject gameSettings;
-    private JSONObject terrainSettings;
-    public void getGameSettings(String terrainPath, String gamePath){
+    private final JSONObject gameSettings;
+    private final JSONObject terrainSettings;
+    public Initialization(String terrainPath, String gamePath){
         Read readInput = new Read();
         this.terrainSettings = (JSONObject) readInput.readFile(terrainPath);
         this.gameSettings = (JSONObject) readInput.readFile(gamePath);
