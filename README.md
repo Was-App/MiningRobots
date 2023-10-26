@@ -10,7 +10,7 @@ A entrada do programa é composta por dois arquivos no formato ".json". Um arqui
 
 ### Instruções
 
-As instruções podem ser simples, como virar a direita (turnLeft), virar a esquerda (turnRight), andar(walk), e prospectar Helium (prospectHelium), ou complexas, como andar para o caminho de menor resistência (walkToBestDirection) ou prospectar apenas se a concentração de helium for maior que a metade (prospectIfGreaterThenHalf).
+As instruções podem ser simples, como virar a direita (turnLeft), virar a esquerda (turnRight), andar(walk), e prospectar Helium (prospectHelium), ou complexas, como andar para o caminho de menor resistência (walkToBestDirection).
 
 ## Saída
 
