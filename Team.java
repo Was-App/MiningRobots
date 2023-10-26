@@ -37,6 +37,7 @@ public class Team {
                 int randomY = random.nextInt(terrain.height);
                 if(!terrain.grid[randomX][randomY].isOccupied){
                     robots[i].currentCell = terrain.grid[randomX][randomY];
+                    robots[i].currentCell.isOccupied = true;
                     break;
                 }
             }

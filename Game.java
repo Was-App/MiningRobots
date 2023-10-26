@@ -3,23 +3,28 @@ public class Game {
     public int secondsPassed;
     public int gameTime;
     public Terrain gameTerrain;
-    public Team teams[];
-    public Game(int gameTime, Terrain gameTerrain){
+    public Team[] teams;
+    public Game(int gameTime, Terrain gameTerrain, Team[] teams){
 
     }
 
     public void run(){
+        for(Team team : this.teams)
+            team.placeRobots(gameTerrain);
+        gameTerrain.printTerrainInformation();
         while(secondsPassed <= this.gameTime){
             for(Team team : this.teams){
+                team.printTeamInformation();
                 team.updateAllControllers();
+
             }
             secondsPassed+=1;
-            this.printInformation();
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
-    // Basically a while loop that runs until all the game time has passed, and sleeps for 1 second
-    // Update all controllers in it, can be done in the team class (team.updateAllControllers)
-    // At the end of it, print Information to the user, can create a method to do so in each Relevant Class
-    // Maybe bring back Robot's position, so it can be printed easily
 
 }
