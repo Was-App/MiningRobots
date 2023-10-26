@@ -7,16 +7,16 @@ public class Initialization {
     private JSONObject terrainSettings;
     public void getGameSettings(String terrainPath, String gamePath){
         Read readInput = new Read();
-        terrainSettings = (JSONObject) readInput.readFile(terrainPath);
-        gameSettings = (JSONObject) readInput.readFile(gamePath);
+        this.terrainSettings = (JSONObject) readInput.readFile(terrainPath);
+        this.gameSettings = (JSONObject) readInput.readFile(gamePath);
     }
 
     public int getTerrainLength(){
-        return (int) gameSettings.get("length");
+        return (int) terrainSettings.get("length");
     }
 
     public int getTerrainHeight(){
-        return (int) gameSettings.get("height");
+        return (int) terrainSettings.get("height");
     }
 
 

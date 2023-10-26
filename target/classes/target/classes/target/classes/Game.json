@@ -1,0 +1,15 @@
+{
+  "Game Time" : 5,
+  "Teams": {
+    "Team1": {
+      "name": "Red",
+      "number of robots": 2
+    },
+    "Team2": {
+      "name": "Yellow",
+      "number of robots": 3
+    }
+
+  }
+
+}
