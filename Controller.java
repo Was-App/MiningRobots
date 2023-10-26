@@ -37,9 +37,8 @@ class simpleController extends Controller{
 
         }else{
             this.inactiveTimeRemaining -= 1;
-            if(this.inactiveTimeRemaining == 0)
-                this.isActive = true;
         }
+        this.isActive = this.inactiveTimeRemaining == 0;
     }
 }
 

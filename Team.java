@@ -43,4 +43,15 @@ public class Team {
         }
     }
 
+    public void updateAllControllers(){
+        for(Controller controller : this.controllers){
+            controller.update();
+        }
+    }
+
+    public void printTeamInformation(){
+        System.out.println("TIME: "+this.name+"\n");
+
+    }
+
 }

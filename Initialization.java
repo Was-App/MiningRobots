@@ -19,7 +19,6 @@ public class Initialization {
         return (int) terrainSettings.get("height");
     }
 
-
     public ArrayList<Team> setTeams(){
         JSONObject teamsFromFile = (JSONObject) gameSettings.get("Teams");
         ArrayList<Team> teams = new ArrayList<>();
