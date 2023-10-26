@@ -41,4 +41,18 @@ public class Terrain {
         return x >= 0 && x < this.height && y >= 0 && y < this.length;
     }
 
+    public void printTerrainInformation(){
+        System.out.println("TERRENO: ");
+        for(int i=0;i<this.height;i++){
+            System.out.print("X " + i + ": [ ");
+            for(int j=0;j<this.length;j++){
+                System.out.print("Coluna " + j + "= (");
+                System.out.print("Rugosidade: " + this.grid[i][j].roughness);
+                System.out.print("Helium: " + this.grid[i][j].heliumConcentration);
+                System.out.print(")");
+            }
+            System.out.println(" ]");
+        }
+    }
+
 }

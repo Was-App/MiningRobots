@@ -3,7 +3,6 @@ public class Team {
     Robot[] robots;
     Controller[] controllers;
     String name;
-    String[] robotNames;
     int numberOfRobots;
 
     public Team(int numberOfRobots, String teamName, String controllerType){
@@ -30,7 +29,6 @@ public class Team {
 
     public void placeRobots(Terrain terrain){
         Random random = new Random();
-        boolean freeSpace = false;
         for(int i=0;i<numberOfRobots;i++){
             while(true){
                 int randomX = random.nextInt(terrain.length);
@@ -38,6 +36,7 @@ public class Team {
                 if(!terrain.grid[randomX][randomY].isOccupied){
                     robots[i].currentCell = terrain.grid[randomX][randomY];
                     robots[i].currentCell.isOccupied = true;
+                    robots[i].position.coordinates = new int[]{randomX, randomY};
                     break;
                 }
             }
@@ -51,8 +50,10 @@ public class Team {
     }
 
     public void printTeamInformation(){
-        System.out.println("TIME: "+this.name+"\n");
-
+        System.out.println("TIME: "+this.name);
+        for(Robot robot : this.robots){
+            robot.printRobotInformation();
+        }
     }
 
 }

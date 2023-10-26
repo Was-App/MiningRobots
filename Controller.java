@@ -32,7 +32,6 @@ class simpleController extends Controller{
                 this.controlledRobot.walk();
                 this.inactiveTimeRemaining += controlledRobot.getTimeToWalk();
             }
-            this.isActive = false;
             this.inactiveTimeRemaining += Robot.baseTimeToDoActions;
 
         }else{
@@ -70,7 +69,7 @@ class complexController extends Controller {
 
     private void walkToBestDirection() {
         int numberOfTurns = 0;
-        while (this.controlledRobot.orientation != bestDirection) {
+        while (this.controlledRobot.position.orientation != bestDirection) {
             this.controlledRobot.turnRight();
             numberOfTurns += 1;
         }
@@ -82,12 +81,12 @@ class complexController extends Controller {
     }
 
     private void findBestUnoccupiedDirection() {
-        this.bestDirection = controlledRobot.orientation;
+        this.bestDirection = controlledRobot.position.orientation;
         float leastRoughness = this.controlledRobot.scanFollowingRoughness();
         for (int i = 0; i < this.controlledRobot.currentCell.adjacentCells.length; i++) {
             this.controlledRobot.turnRight();
             if (controlledRobot.scanFollowingRoughness() < leastRoughness && !this.controlledRobot.isFollowingPossibleToWalk()) {
-                this.bestDirection = this.controlledRobot.orientation;
+                this.bestDirection = this.controlledRobot.position.orientation;
                 leastRoughness = controlledRobot.scanFollowingRoughness();
             }
         }
